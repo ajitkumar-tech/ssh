@@ -70,13 +70,13 @@ resource "aws_route_table" "private_rt" {
 
 
 resource "aws_route_table_association" "subnet_1_assoc" {
-  subnet_id      = aws_subnet.public_subnet1a.id
-  route_table_id = aws_route_table.public_rt1.id
+  subnet_id      = aws_subnet.public_subnet.id
+  route_table_id = aws_route_table.public_rt.id
 }
 
 resource "aws_route_table_association" "subnet_2_assoc" {
-  subnet_id      = aws_subnet.public_subnet1b.id
-  route_table_id = aws_route_table.public_rt2.id
+  subnet_id      = aws_subnet.private_subnet.id
+  route_table_id = aws_route_table.priavate_rt.id
 }
 
 resource "aws_security_group" "efs-sg" {
