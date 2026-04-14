@@ -137,6 +137,7 @@ resource "aws_instance" "instance" {
   tags = { 
     Name = "instance-2"
   }
+}
 
 resource "aws_lb" "nlb" {
   name               = "my-nlb"
