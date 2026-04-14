@@ -1,6 +1,6 @@
 terraform {
   backend "s3" { 
-    bucket = "vpc-endpoint"
+    bucket = "vpc-endpoint-8"
     key    = "statefile/terraform.tfstate" 
     region = "ap-south-1"
     
