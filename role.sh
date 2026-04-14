@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ROLE_NAME="adminrole"
+ROLE_NAME="adminrole1"
 
 region="ap-south-1" 
 
