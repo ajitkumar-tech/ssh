@@ -2,7 +2,7 @@
 
 ROLE_NAME="adminrole"
 
-region="ap-south-1"
+region="ap-south-1" 
 
 INSTANCE_PROFILE_NAME="adminprofile"
  
