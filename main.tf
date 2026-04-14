@@ -141,7 +141,7 @@ resource "aws_vpc_endpoint" "s3_endpoint" {
   vpc_endpoint_type = "Gateway"
 
   route_table_ids = [
-    "rtb-0ed60c3bfa22ace82"
+    "rtb-0723d954278dd1815"
   ]
 
   tags = {
