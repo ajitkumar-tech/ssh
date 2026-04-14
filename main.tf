@@ -75,7 +75,7 @@ resource "aws_route_table_association" "subnet_1_assoc" {
 
 resource "aws_route_table_association" "subnet_2_assoc" {
   subnet_id      = aws_subnet.public_subnet2.id
-  route_table_id = aws_route_table.publicrt2.id
+  route_table_id = aws_route_table.public_rt2.id
 }
 
 resource "aws_security_group" "efs-sg" {
