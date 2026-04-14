@@ -145,8 +145,8 @@ resource "aws_lb" "nlb" {
   load_balancer_type = "network"
 
   subnets = [
-    aws_subnet.public_subnet1,
-    aws_subnet.public_subnet2
+    aws_subnet.public_subnet1.id,
+    aws_subnet.public_subnet2.id
   ]
 
   enable_cross_zone_load_balancing = true
