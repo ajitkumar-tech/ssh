@@ -224,4 +224,5 @@ resource "aws_autoscaling_policy" "cpu_policy" {
       predefined_metric_type = "ASGAverageCPUUtilization"
     }
   }
+}
 
