@@ -193,3 +193,35 @@ resource "aws_lb_target_group_attachment" "attach" {
   target_id        = aws_instance.example.id
   port             = 80
 }
+
+resource "aws_launch_template" "lt" {
+  name_prefix   = "simple-lt-"
+  image_id      = "ami-03793655b06c6e29a"
+  instance_type = "t3.micro"
+}
+resource "aws_autoscaling_group" "asg" {
+  name                = "simple-asg"
+  min_size            = 1
+  max_size            = 3
+  desired_capacity    = 2
+  vpc_zone_identifier = ["subnet-0001b9287210723a6", "subnet-06f5bf93fd6fb0685"] 
+
+  launch_template {
+    id      = aws_launch_template.lt.id
+    version = "$Latest"
+  }
+}
+
+resource "aws_autoscaling_policy" "cpu_policy" {
+  name                   = "cpu-policy"
+  autoscaling_group_name = aws_autoscaling_group.asg.name
+  policy_type            = "TargetTrackingScaling"
+
+  target_tracking_configuration {
+    target_value = 50.0
+
+    predefined_metric_specification {
+      predefined_metric_type = "ASGAverageCPUUtilization"
+    }
+  }
+
