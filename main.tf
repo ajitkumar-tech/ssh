@@ -3,7 +3,7 @@ region = "ap-south-1"
 }
  
  
-resource "aws_vpc" "main"                            
+resource "aws_vpc" "main" {                            
   cidr_block = "10.0.0.0/16"
   enable_dns_support   = var.is_enabled
   enable_dns_hostnames = var.is_enabled   
@@ -193,33 +193,3 @@ resource "aws_lb_target_group_attachment" "attach" {
   target_id        = aws_instance.example.id
   port             = 80
 }
-resource "aws_launch_template" "lt" {
-  name_prefix   = "simple-lt-"
-  image_id      = "ami-0c55b159cbfafe1f0" # Replace
-  instance_type = "t2.micro"
-}
-resource "aws_autoscaling_group" "asg" {
-  name                = "simple-asg"
-  min_size            = 1
-  max_size            = 3
-  desired_capacity    = 2
-  vpc_zone_identifier = ["subnet-abc123", "subnet-def456"] # Replace
-
-  launch_template {
-    id      = aws_launch_template.lt.id
-    version = "$Latest"
-  }
-}
-
-resource "aws_autoscaling_policy" "cpu_policy" {
-  name                   = "cpu-policy"
-  autoscaling_group_name = aws_autoscaling_group.asg.name
-  policy_type            = "TargetTrackingScaling"
-
-  target_tracking_configuration {
-    target_value = 50.0
-
-    predefined_metric_specification {
-      predefined_metric_type = "ASGAverageCPUUtilization"
-    }
-  }
