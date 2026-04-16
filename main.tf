@@ -144,16 +144,14 @@ resource "aws_vpc_endpoint" "s3" {
   vpc_endpoint_type = "Gateway"
   route_table_ids   = [aws_route_table.private_rt.id]
 
-  policy = jsonencode({
-    Statement = [
-      {
-        Action   = "*"
-        Effect   = "Allow"
-        Resource = "*"
-        Principal = "*"
-      }
-    ]
-  })
-}
-
+ policy = jsonencode({
+  Version = "2012-10-17"
+  Statement = [
+    {
+      Effect   = "Allow"
+      Action   = "*"
+      Resource = "*"
+    }
+  ]
+})
 
