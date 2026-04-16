@@ -58,7 +58,7 @@ jobs:
       
 
       - name: deploy 
-        run: kubectl apply -f nginx-deployment-service.yaml
+        run: kubectl apply -f deployment.yaml
 
       - name: pod
         run: kubectl get pods
