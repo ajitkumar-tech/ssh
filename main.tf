@@ -176,7 +176,7 @@ resource "aws_eks_node_group" "eks_node_group" {
   subnet_ids      = [aws_subnet.public_subnet_1.id, aws_subnet.public_subnet_2.id]
   instance_types  = ["t2.medium"] 
   disk_size       = 20  
-  ami_type         = "AL2_ARM_64"
+  ami_type         = "AL2_x86_64"
   capacity_type    = "ON_DEMAND"  
   
   tags = {
