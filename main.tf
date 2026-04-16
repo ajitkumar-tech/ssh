@@ -174,7 +174,7 @@ resource "aws_eks_node_group" "eks_node_group" {
   node_group_name = "my-node-group"
   node_role_arn   = aws_iam_role.eks_worker_role.arn 
   subnet_ids      = [aws_subnet.public_subnet_1.id, aws_subnet.public_subnet_2.id]
-  instance_types  = ["t3.medium"] 
+  instance_types  = ["t2.large"] 
   disk_size       = 20  
   ami_type         = "ami-056244ee7f6e2feb8"
   capacity_type    = "ON_DEMAND"  
