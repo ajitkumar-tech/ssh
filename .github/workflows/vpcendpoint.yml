@@ -36,7 +36,7 @@ jobs:
         run: terraform plan 
        
       - name: terraform
-        run: terraform destroy -auto-approve 
+        run: terraform apply -auto-approve 
 
       - name: Log in to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v1
@@ -62,7 +62,7 @@ jobs:
       
 
       - name: deploy 
-        run: kubectl apply -f deployment.yaml
+        run: kubectl app -f deployment.yaml
 
       - name: pod
         run: kubectl get pods
